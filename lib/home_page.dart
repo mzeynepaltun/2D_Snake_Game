@@ -124,9 +124,6 @@ class _GamePageState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final screenSize = MediaQuery.of(context).size;
-    // final screenWidth = screenSize.width;
-    // final screenHeight = screenSize.height;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -254,7 +251,7 @@ class _GamePageState extends State<GamePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   RawMaterialButton(
-                      fillColor: isPlaying ? Colors.red : Colors.blue,
+                      fillColor: isPlaying ? Colors.red : Colors.orange,
                       child: Text(
                         isPlaying ? 'End' : 'Start',
                         style: fontStyle,
