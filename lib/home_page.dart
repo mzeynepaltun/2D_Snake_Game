@@ -11,7 +11,7 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final int squaresPerRow = 20;
-  final int squaresPerCol = 30;
+  final int squaresPerCol = 20;
   final fontStyle = const TextStyle(color: Colors.white, fontSize: 20);
   final randomGen = Random();
 
@@ -27,7 +27,7 @@ class _GamePageState extends State<GamePage> {
   var isPlaying = false;
 
   void startGame() {
-    speed = 0.75;
+    speed = 1;
 
     snake = [
       [(squaresPerRow / 2).floor(), (squaresPerCol / 2).floor()]
@@ -37,7 +37,7 @@ class _GamePageState extends State<GamePage> {
     createFood();
 
     isPlaying = true;
-    Timer.periodic(Duration(milliseconds: 300 ~/ speed), (Timer timer) {
+    Timer.periodic(Duration(milliseconds: 200 ~/ speed), (Timer timer) {
       moveSnake();
       if (checkGameOver()) {
         timer.cancel();
@@ -67,7 +67,6 @@ class _GamePageState extends State<GamePage> {
         snake.removeLast();
       } else {
         speed = speed + 0.25;
-        print(speed);
         createFood();
       }
     });
@@ -132,7 +131,7 @@ class _GamePageState extends State<GamePage> {
             child: AspectRatio(
               aspectRatio: squaresPerRow / (squaresPerCol + 2),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 5),
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -163,7 +162,7 @@ class _GamePageState extends State<GamePage> {
                     }
 
                     return Container(
-                      margin: const EdgeInsets.all(1),
+                      margin: const EdgeInsets.all(1.5),
                       decoration: BoxDecoration(
                         color: color,
                         shape: BoxShape.circle,
@@ -246,7 +245,7 @@ class _GamePageState extends State<GamePage> {
             ]),
           ),
           Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20, top: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
